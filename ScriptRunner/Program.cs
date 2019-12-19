@@ -17,8 +17,9 @@ namespace ScriptRunner
                 path = args[0];
             }
 
-            var appSettings = Directory.GetFiles(path, "appsettings.json", SearchOption.AllDirectories)
-                .FirstOrDefault();
+            var appSettings = Directory
+                .GetFiles(path, "appsettings.json", SearchOption.AllDirectories)
+                .FirstOrDefault(x => !x.Contains("tests"));
 
             var baseFolder = Path.GetDirectoryName(appSettings);
 
